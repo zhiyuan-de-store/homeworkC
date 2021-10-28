@@ -1,0 +1,34 @@
+#include<stdio.h>
+int main(void)
+{
+	int N;
+	printf("请输入行数N=");
+	scanf_s("%d", &N);
+	printf("如下图所示\n");
+	for (int n = 1;n <= N;n++)//先确定前N行的格式
+	{
+		
+		for (int j = 1;j <= N - n; j++)//确定前N行中第n行输出的' '(空格）的数目
+		{
+			printf(" ");
+		}
+		for (int k = 1;k <= 2*n-1; k++)//确定前N行中第n行输出'*'的数目
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+	for (int n = 1;n <= N - 1;n++)//对第N+1--2N+1编辑输出格式
+	{
+		for (int j = 1;j <= n; j++)//确定第N+1--2N+1行输出' '(空格）的数目
+		{
+			printf(" ");
+		}
+		for (int k = 1;k <= 2*N-2*n-1;k++)//确定第N+1--2N+1行输出'*'的数目
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+	return 0;
+}
