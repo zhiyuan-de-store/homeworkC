@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	double GetPtToLineDist(double A, double B, double C, double xp, double yp);
+	double min3(double a, double b, double c);
+	double a, b, c;
+	double x1, y1;
+	double x2, y2;
+	double x3, y3;
+	printf("请依次在键盘上输入A,B,C,x1,y1,x2,y2,x3,y3\n");
+	printf("(数字用逗号隔开）\n");
+	scanf_s("%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf",&a,&b,&c,&x1,&y1,&x2,&y2,&x3,&y3);
+	double d1 = GetPtToLineDist(a, b, c, x1, y1);
+	double d2 = GetPtToLineDist(a, b, c, x2, y2);
+	double d3 = GetPtToLineDist(a, b, c, x3, y3);
+	printf("所求最小距离为:%lf", min3(d1, d2, d3));
+	return 0;
+}
+double GetPtToLineDist(double a, double b, double c, double xp, double yp)
+{
+	double dist = -1.0;
+	double A ;
+	double B ;
+	double C ;
+	double D ;
+	A = a * xp + b * yp + c;
+	B = A >= 0 ? A : -A;
+	C = powl(a * a + b * b, 0.5);
+	dist = B / C;
+	return dist;
+}
+double min3(double a, double b, double c)
+{
+	double dRet = -1.0;
+	double min = -1.0;
+	min = a < b ? a : b;
+	dRet = min < c ? min : c;
+	return dRet;
+}
