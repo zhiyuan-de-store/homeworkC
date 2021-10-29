@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+int main(void)
+{
+	int i, c, num;
+	int indiv, ten, hundred, thousand, ten_thousand;
+	c = 0;
+	printf("请输入一个小于等于99999的正整数，i=");
+	scanf_s("%d", &i);
+	num= i;
+	while (i)//借助while语句计算输入数字的位数
+	{
+		i /= 10;
+		c += 1;
+	}
+	printf("正整数%d的位数为%d", num, c);
+	ten_thousand = (int)num / 10000;//通过int数据特性（保留整数）计算出输入数字的每一位的数字
+	thousand = (int)(num - 10000 * ten_thousand) / 1000;
+	hundred = (int)(num - 10000 * ten_thousand - 1000 * thousand) / 100;
+	ten = (int)(num - 10000 * ten_thousand - 1000 * thousand - 100 * hundred) / 10;
+	indiv = (int)(num - 10000 * ten_thousand - 1000 * thousand - 100 * hundred - 10 * ten);
+	printf("每位数字为：");
+	void number(int x);//引入函数输出每一位数字
+	number(ten_thousand);
+	number(thousand);
+	number(hundred);
+	number(ten);
+	number(indiv);
+	printf("\n反序数字为：");
+	void n_number(int y);//引入函数输出反序数字
+	n_number(indiv);//确定反序数字
+	n_number(ten);
+	n_number(hundred);
+	n_number(thousand);
+	n_number(ten_thousand);
+	return 0;
+} 
+void number(int x)
+{
+	if (x > 0)printf("%d ", x);//通过if，else的判断语句来判断输出的是数字或者不输出
+	else printf("");
+}
+void n_number(int y)
+{
+	if (y > 0)printf("%d", y);//通过if，else的判断语句来判断输出的是数字或者不输出
+	else printf("");
+}
